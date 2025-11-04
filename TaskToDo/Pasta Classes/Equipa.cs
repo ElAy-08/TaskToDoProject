@@ -11,7 +11,7 @@ namespace TaskToDo.Pasta_Classes
         //Uma equipa tem um nome
         public string Nome { get; set; }
         //Uma equipa tem vários funcionários
-        public List<Funcionario> Funcionarios = new List<Funcionario>();
+        public List<Funcionario> Funcionarios { get; set; }  = new List<Funcionario>();
         //Override do ToString para mostrar o nome da equipa na TreeView e ComboBox
         public override string ToString() => Nome;
 
