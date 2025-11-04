@@ -276,7 +276,7 @@ namespace TaskToDo
                 errorProvider1.SetError(txtTarefa, "O nome da tarefa não pode estar vazio.");
                 valido = false;
             }
-            if (chbCoordenador.Checked == false && chbResponsavel.Checked == false)
+            if (chbCoordenador.Checked == false && chbResponsavel.Checked == false || (chbCoordenador.Checked && chbResponsavel.Checked))
             {
                 errorProvider2.SetError(grbCargo, "Deve selecionar pelo menos um tipo de cargo.");
                 valido = false;
@@ -349,24 +349,45 @@ namespace TaskToDo
                 return;
             }
 
-            
+            // 1. Procura a equipe na TreeView
+            TreeNode teamNode = tvw_main.Nodes
+                .Cast<TreeNode>()
+                .FirstOrDefault(n => n.Text == cmbEquipa.Text);
 
-            bool verequipa = false;
-            foreach (TreeNode node in tvw_main.Nodes)
+            if (teamNode == null)
             {
-                if (node.Text == cmbEquipa.Text)
-                    verequipa = true;
+                // Se não existir, cria a equipe
+                teamNode = new TreeNode(cmbEquipa.Text) { Tag = new Equipa { Nome = cmbEquipa.Text } };
+                tvw_main.Nodes.Add(teamNode);
             }
 
-            if (!verequipa)
+            // 2. Procura o funcionário dentro da equipe
+            // 2. Procura o funcionário dentro da equipe
+            TreeNode funcNode = teamNode.Nodes
+                .Cast<TreeNode>()
+                .FirstOrDefault(n => n.Text.StartsWith(cmbFunc.Text));
+
+            if (funcNode == null)
             {
-                TreeNode newTeamNode = new TreeNode(cmbEquipa.Text) { Tag = new Equipa { Nome = cmbEquipa.Text } };
-                tvw_main.Nodes.Add(newTeamNode);
+                // Adiciona o funcionário e indica cargo
+                string cargo = (chbCoordenador.Checked ? "Coordenador" : "") +
+                               (chbResponsavel.Checked ? (chbCoordenador.Checked ? " / " : "") + "Responsável" : "");
 
+                string nomeComCargo = string.IsNullOrEmpty(cargo) ? cmbFunc.Text : $"{cmbFunc.Text} - {cargo}";
+
+                funcNode = new TreeNode(nomeComCargo) { Tag = new Funcionario { Nome = cmbFunc.Text } };
+
+                // Se for Coordenador, adiciona no topo da lista de funcionários da equipe
+                if (chbCoordenador.Checked)
+                    teamNode.Nodes.Insert(0, funcNode); // topo
+                else
+                    teamNode.Nodes.Add(funcNode); // final
             }
-            else
-            { 
-            }
+
+            // 3. Adiciona a tarefa
+            TreeNode taskNode = new TreeNode(txtTarefa.Text) { Tag = new Tarefa { Nome = txtTarefa.Text } };
+            funcNode.Nodes.Add(taskNode);
+
         }
 
         //INICIO - EVENTOS LIMPA ERROR PROVIDERS AO ALTERAR OS VALORES DOS CONTROLOS
