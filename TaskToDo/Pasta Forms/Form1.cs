@@ -361,7 +361,7 @@ namespace TaskToDo
                 tvw_main.Nodes.Add(teamNode);
             }
 
-            // 2. Procura o funcionário dentro da equipe
+
             // 2. Procura o funcionário dentro da equipe
             TreeNode funcNode = teamNode.Nodes
                 .Cast<TreeNode>()
