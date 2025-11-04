@@ -46,7 +46,7 @@
             this.grbCargo = new System.Windows.Forms.GroupBox();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
-            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.tvw_main = new System.Windows.Forms.TreeView();
             this.contextMenuMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ContextMenuEditar = new System.Windows.Forms.ToolStripMenuItem();
             this.ContextMenuApagar = new System.Windows.Forms.ToolStripMenuItem();
@@ -75,9 +75,9 @@
             // 
             this.lbEquipa.AutoSize = true;
             this.lbEquipa.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEquipa.Location = new System.Drawing.Point(26, 24);
+            this.lbEquipa.Location = new System.Drawing.Point(23, 19);
             this.lbEquipa.Name = "lbEquipa";
-            this.lbEquipa.Size = new System.Drawing.Size(79, 24);
+            this.lbEquipa.Size = new System.Drawing.Size(68, 21);
             this.lbEquipa.TabIndex = 0;
             this.lbEquipa.Text = "Equipa";
             // 
@@ -85,9 +85,9 @@
             // 
             this.lbFunc.AutoSize = true;
             this.lbFunc.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFunc.Location = new System.Drawing.Point(224, 24);
+            this.lbFunc.Location = new System.Drawing.Point(199, 19);
             this.lbFunc.Name = "lbFunc";
-            this.lbFunc.Size = new System.Drawing.Size(127, 24);
+            this.lbFunc.Size = new System.Drawing.Size(104, 21);
             this.lbFunc.TabIndex = 1;
             this.lbFunc.Text = "Funcionário";
             // 
@@ -95,9 +95,9 @@
             // 
             this.lbTarefa.AutoSize = true;
             this.lbTarefa.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTarefa.Location = new System.Drawing.Point(26, 103);
+            this.lbTarefa.Location = new System.Drawing.Point(23, 82);
             this.lbTarefa.Name = "lbTarefa";
-            this.lbTarefa.Size = new System.Drawing.Size(73, 24);
+            this.lbTarefa.Size = new System.Drawing.Size(63, 21);
             this.lbTarefa.TabIndex = 2;
             this.lbTarefa.Text = "Tarefa";
             // 
@@ -105,9 +105,9 @@
             // 
             this.lbStartData.AutoSize = true;
             this.lbStartData.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStartData.Location = new System.Drawing.Point(26, 225);
+            this.lbStartData.Location = new System.Drawing.Point(23, 180);
             this.lbStartData.Name = "lbStartData";
-            this.lbStartData.Size = new System.Drawing.Size(155, 24);
+            this.lbStartData.Size = new System.Drawing.Size(130, 21);
             this.lbStartData.TabIndex = 3;
             this.lbStartData.Text = "Data de Início";
             // 
@@ -115,9 +115,9 @@
             // 
             this.lbEndData.AutoSize = true;
             this.lbEndData.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEndData.Location = new System.Drawing.Point(224, 225);
+            this.lbEndData.Location = new System.Drawing.Point(199, 180);
             this.lbEndData.Name = "lbEndData";
-            this.lbEndData.Size = new System.Drawing.Size(135, 24);
+            this.lbEndData.Size = new System.Drawing.Size(113, 21);
             this.lbEndData.TabIndex = 4;
             this.lbEndData.Text = "Data de Fim";
             // 
@@ -125,9 +125,9 @@
             // 
             this.lbDescrição.AutoSize = true;
             this.lbDescrição.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDescrição.Location = new System.Drawing.Point(26, 298);
+            this.lbDescrição.Location = new System.Drawing.Point(23, 238);
             this.lbDescrição.Name = "lbDescrição";
-            this.lbDescrição.Size = new System.Drawing.Size(113, 24);
+            this.lbDescrição.Size = new System.Drawing.Size(94, 21);
             this.lbDescrição.TabIndex = 5;
             this.lbDescrição.Text = "Descrição";
             // 
@@ -135,10 +135,9 @@
             // 
             this.cmbEquipa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEquipa.FormattingEnabled = true;
-            this.cmbEquipa.Location = new System.Drawing.Point(30, 55);
-            this.cmbEquipa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbEquipa.Location = new System.Drawing.Point(27, 44);
             this.cmbEquipa.Name = "cmbEquipa";
-            this.cmbEquipa.Size = new System.Drawing.Size(157, 29);
+            this.cmbEquipa.Size = new System.Drawing.Size(140, 28);
             this.cmbEquipa.TabIndex = 6;
             this.cmbEquipa.SelectedIndexChanged += new System.EventHandler(this.cmbEquipa_SelectedIndexChanged);
             // 
@@ -146,62 +145,56 @@
             // 
             this.cmbFunc.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFunc.FormattingEnabled = true;
-            this.cmbFunc.Location = new System.Drawing.Point(228, 55);
-            this.cmbFunc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbFunc.Location = new System.Drawing.Point(203, 44);
             this.cmbFunc.Name = "cmbFunc";
-            this.cmbFunc.Size = new System.Drawing.Size(201, 29);
+            this.cmbFunc.Size = new System.Drawing.Size(179, 28);
             this.cmbFunc.TabIndex = 7;
             this.cmbFunc.SelectedIndexChanged += new System.EventHandler(this.cmbFunc_SelectedIndexChanged);
             // 
             // txtTarefa
             // 
             this.txtTarefa.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTarefa.Location = new System.Drawing.Point(30, 134);
-            this.txtTarefa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtTarefa.Location = new System.Drawing.Point(27, 107);
             this.txtTarefa.MaxLength = 30;
             this.txtTarefa.Name = "txtTarefa";
-            this.txtTarefa.Size = new System.Drawing.Size(157, 30);
+            this.txtTarefa.Size = new System.Drawing.Size(140, 26);
             this.txtTarefa.TabIndex = 8;
             this.txtTarefa.TextChanged += new System.EventHandler(this.txtTarefa_TextChanged);
             // 
             // mtxtStartData
             // 
             this.mtxtStartData.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtxtStartData.Location = new System.Drawing.Point(30, 257);
-            this.mtxtStartData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.mtxtStartData.Location = new System.Drawing.Point(27, 206);
             this.mtxtStartData.Name = "mtxtStartData";
-            this.mtxtStartData.Size = new System.Drawing.Size(157, 30);
+            this.mtxtStartData.Size = new System.Drawing.Size(140, 26);
             this.mtxtStartData.TabIndex = 9;
             this.mtxtStartData.TextChanged += new System.EventHandler(this.mtxtStartData_TextChanged);
             // 
             // mtxtEndData
             // 
             this.mtxtEndData.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtxtEndData.Location = new System.Drawing.Point(228, 257);
-            this.mtxtEndData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.mtxtEndData.Location = new System.Drawing.Point(203, 206);
             this.mtxtEndData.Name = "mtxtEndData";
-            this.mtxtEndData.Size = new System.Drawing.Size(157, 30);
+            this.mtxtEndData.Size = new System.Drawing.Size(140, 26);
             this.mtxtEndData.TabIndex = 10;
             this.mtxtEndData.TextChanged += new System.EventHandler(this.mtxtEndData_TextChanged);
             // 
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(30, 329);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.textBox2.Location = new System.Drawing.Point(27, 263);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(399, 218);
+            this.textBox2.Size = new System.Drawing.Size(355, 175);
             this.textBox2.TabIndex = 11;
             // 
             // chbCoordenador
             // 
             this.chbCoordenador.AutoSize = true;
             this.chbCoordenador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbCoordenador.Location = new System.Drawing.Point(18, 32);
-            this.chbCoordenador.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chbCoordenador.Location = new System.Drawing.Point(16, 26);
             this.chbCoordenador.Name = "chbCoordenador";
-            this.chbCoordenador.Size = new System.Drawing.Size(163, 29);
+            this.chbCoordenador.Size = new System.Drawing.Size(127, 24);
             this.chbCoordenador.TabIndex = 12;
             this.chbCoordenador.Text = "Coordenador";
             this.chbCoordenador.UseVisualStyleBackColor = true;
@@ -211,10 +204,9 @@
             // 
             this.chbResponsavel.AutoSize = true;
             this.chbResponsavel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbResponsavel.Location = new System.Drawing.Point(18, 65);
-            this.chbResponsavel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.chbResponsavel.Location = new System.Drawing.Point(16, 52);
             this.chbResponsavel.Name = "chbResponsavel";
-            this.chbResponsavel.Size = new System.Drawing.Size(163, 29);
+            this.chbResponsavel.Size = new System.Drawing.Size(127, 24);
             this.chbResponsavel.TabIndex = 13;
             this.chbResponsavel.Text = "Responsável";
             this.chbResponsavel.UseVisualStyleBackColor = true;
@@ -225,9 +217,11 @@
             this.grbCargo.Controls.Add(this.chbCoordenador);
             this.grbCargo.Controls.Add(this.chbResponsavel);
             this.grbCargo.Font = new System.Drawing.Font("Century Gothic", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbCargo.Location = new System.Drawing.Point(228, 103);
+            this.grbCargo.Location = new System.Drawing.Point(203, 82);
+            this.grbCargo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.grbCargo.Name = "grbCargo";
-            this.grbCargo.Size = new System.Drawing.Size(201, 108);
+            this.grbCargo.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.grbCargo.Size = new System.Drawing.Size(179, 86);
             this.grbCargo.TabIndex = 14;
             this.grbCargo.TabStop = false;
             this.grbCargo.Text = "Cargo";
@@ -238,9 +232,10 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(448, 496);
+            this.btnGuardar.Location = new System.Drawing.Point(222, 443);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(180, 51);
+            this.btnGuardar.Size = new System.Drawing.Size(160, 41);
             this.btnGuardar.TabIndex = 15;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
@@ -251,21 +246,23 @@
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.Font = new System.Drawing.Font("Century Gothic", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionar.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionar.Location = new System.Drawing.Point(448, 430);
+            this.btnAdicionar.Location = new System.Drawing.Point(27, 443);
+            this.btnAdicionar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(180, 51);
+            this.btnAdicionar.Size = new System.Drawing.Size(160, 41);
             this.btnAdicionar.TabIndex = 17;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = false;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
-            // treeView1
+            // tvw_main
             // 
-            this.treeView1.ContextMenuStrip = this.contextMenuMain;
-            this.treeView1.Location = new System.Drawing.Point(642, 24);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(190, 523);
-            this.treeView1.TabIndex = 18;
+            this.tvw_main.ContextMenuStrip = this.contextMenuMain;
+            this.tvw_main.Location = new System.Drawing.Point(402, 19);
+            this.tvw_main.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.tvw_main.Name = "tvw_main";
+            this.tvw_main.Size = new System.Drawing.Size(305, 465);
+            this.tvw_main.TabIndex = 18;
             // 
             // contextMenuMain
             // 
@@ -279,48 +276,48 @@
             this.ContextMenuCargaTrab,
             this.ContextMenuDesempenho});
             this.contextMenuMain.Name = "contextMenuMain";
-            this.contextMenuMain.Size = new System.Drawing.Size(228, 228);
+            this.contextMenuMain.Size = new System.Drawing.Size(201, 172);
             // 
             // ContextMenuEditar
             // 
             this.ContextMenuEditar.Name = "ContextMenuEditar";
-            this.ContextMenuEditar.Size = new System.Drawing.Size(227, 32);
+            this.ContextMenuEditar.Size = new System.Drawing.Size(200, 24);
             this.ContextMenuEditar.Text = "Editar";
             // 
             // ContextMenuApagar
             // 
             this.ContextMenuApagar.Name = "ContextMenuApagar";
-            this.ContextMenuApagar.Size = new System.Drawing.Size(227, 32);
+            this.ContextMenuApagar.Size = new System.Drawing.Size(200, 24);
             this.ContextMenuApagar.Text = "Apagar";
             // 
             // ContextMenuDetalhes
             // 
             this.ContextMenuDetalhes.Name = "ContextMenuDetalhes";
-            this.ContextMenuDetalhes.Size = new System.Drawing.Size(227, 32);
+            this.ContextMenuDetalhes.Size = new System.Drawing.Size(200, 24);
             this.ContextMenuDetalhes.Text = "Detalhes";
             // 
             // ContextMenuTarefasAct
             // 
             this.ContextMenuTarefasAct.Name = "ContextMenuTarefasAct";
-            this.ContextMenuTarefasAct.Size = new System.Drawing.Size(227, 32);
+            this.ContextMenuTarefasAct.Size = new System.Drawing.Size(200, 24);
             this.ContextMenuTarefasAct.Text = "Tarefas Activas";
             // 
             // ContextMenuListaTar
             // 
             this.ContextMenuListaTar.Name = "ContextMenuListaTar";
-            this.ContextMenuListaTar.Size = new System.Drawing.Size(227, 32);
+            this.ContextMenuListaTar.Size = new System.Drawing.Size(200, 24);
             this.ContextMenuListaTar.Text = "Lista de Tarefas";
             // 
             // ContextMenuCargaTrab
             // 
             this.ContextMenuCargaTrab.Name = "ContextMenuCargaTrab";
-            this.ContextMenuCargaTrab.Size = new System.Drawing.Size(227, 32);
+            this.ContextMenuCargaTrab.Size = new System.Drawing.Size(200, 24);
             this.ContextMenuCargaTrab.Text = "Carga de Trabalho";
             // 
             // ContextMenuDesempenho
             // 
             this.ContextMenuDesempenho.Name = "ContextMenuDesempenho";
-            this.ContextMenuDesempenho.Size = new System.Drawing.Size(227, 32);
+            this.ContextMenuDesempenho.Size = new System.Drawing.Size(200, 24);
             this.ContextMenuDesempenho.Text = "Desempenho";
             // 
             // errorProvider1
@@ -349,10 +346,10 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(845, 562);
-            this.Controls.Add(this.treeView1);
+            this.ClientSize = new System.Drawing.Size(718, 493);
+            this.Controls.Add(this.tvw_main);
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.grbCargo);
@@ -368,10 +365,11 @@
             this.Controls.Add(this.lbTarefa);
             this.Controls.Add(this.lbFunc);
             this.Controls.Add(this.lbEquipa);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "TaskToDo";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.grbCargo.ResumeLayout(false);
             this.grbCargo.PerformLayout();
@@ -406,7 +404,7 @@
         private System.Windows.Forms.GroupBox grbCargo;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TreeView tvw_main;
         private System.Windows.Forms.ContextMenuStrip contextMenuMain;
         private System.Windows.Forms.ToolStripMenuItem ContextMenuEditar;
         private System.Windows.Forms.ToolStripMenuItem ContextMenuApagar;

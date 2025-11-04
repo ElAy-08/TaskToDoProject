@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Serialization;
-using TaskToDo.Pasta_Classes; //Da onde saiu isto? CHATGPT - TENTAR ENTENDER TUDO
+using TaskToDo.Pasta_Classes;
 
 namespace TaskToDo
 {
@@ -215,7 +215,7 @@ namespace TaskToDo
         private void PopularTreeView(Root rootObj) 
         {
             //Limpa TreeView
-            treeView1.Nodes.Clear();
+            tvw_main.Nodes.Clear();
             //Percorremos todas as equipas do objeto Root passado como parâmetro
             foreach (var equipa in rootObj.Equipas)
             {
@@ -242,9 +242,9 @@ namespace TaskToDo
                     equipaNode.Nodes.Add(funcNode);
                 }
                 //No fim, a equipa inteira, com funcs e tarefas é adicionada à TreeView
-                treeView1.Nodes.Add(equipaNode);
+                tvw_main.Nodes.Add(equipaNode);
             }
-            treeView1.ExpandAll();
+            tvw_main.ExpandAll();
         }
 
         //Método para guardar os erros num ficheiro de log - log.txt
@@ -271,9 +271,9 @@ namespace TaskToDo
             bool valido = true;
 
             //Error Providers - ComboBoxes, TextBox e CheckBoxes
-            if(string.IsNullOrEmpty(txtTarefa.Text))
+            if (string.IsNullOrEmpty(txtTarefa.Text))
             {
-                errorProvider1.SetError(txtTarefa,"O nome da tarefa não pode estar vazio.");
+                errorProvider1.SetError(txtTarefa, "O nome da tarefa não pode estar vazio.");
                 valido = false;
             }
             if (chbCoordenador.Checked == false && chbResponsavel.Checked == false)
@@ -281,26 +281,26 @@ namespace TaskToDo
                 errorProvider2.SetError(grbCargo, "Deve selecionar pelo menos um tipo de cargo.");
                 valido = false;
             }
-            if(cmbEquipa.SelectedIndex == -1)
+            if (cmbEquipa.SelectedIndex == -1)
             {
-                errorProvider3.SetError(cmbEquipa,"Deve selecionar uma equipa.");
+                errorProvider3.SetError(cmbEquipa, "Deve selecionar uma equipa.");
                 valido = false;
             }
             if (cmbFunc.SelectedIndex == -1)
             {
-                errorProvider4.SetError(cmbFunc,"Deve selecionar um funcionário.");
+                errorProvider4.SetError(cmbFunc, "Deve selecionar um funcionário.");
                 valido = false;
             }
 
             //Error Providers - MaskedTextBoxes (Datas)
             if (!mtxtStartData.MaskCompleted) //MaskCompleted vê se as entradas obrigatórias da máscara estão preenchidas / MaskFull ve as obrigatórias e opcionais
             {
-                errorProvider5.SetError(mtxtStartData,"Deve inserir uma data de início válida.");
+                errorProvider5.SetError(mtxtStartData, "Deve inserir uma data de início válida.");
                 valido = false;
             }
             if (!mtxtEndData.MaskCompleted)
             {
-                errorProvider6.SetError(mtxtEndData,"Deve inserir uma data de fim válida.");
+                errorProvider6.SetError(mtxtEndData, "Deve inserir uma data de fim válida.");
                 valido = false;
             }
 
@@ -349,8 +349,24 @@ namespace TaskToDo
                 return;
             }
 
-            //FALTA MENSAGEM CASO CORRA COM SUCESSO E A TAREFA SEJA ADICIONADA
+            
 
+            bool verequipa = false;
+            foreach (TreeNode node in tvw_main.Nodes)
+            {
+                if (node.Text == cmbEquipa.Text)
+                    verequipa = true;
+            }
+
+            if (!verequipa)
+            {
+                TreeNode newTeamNode = new TreeNode(cmbEquipa.Text) { Tag = new Equipa { Nome = cmbEquipa.Text } };
+                tvw_main.Nodes.Add(newTeamNode);
+
+            }
+            else
+            { 
+            }
         }
 
         //INICIO - EVENTOS LIMPA ERROR PROVIDERS AO ALTERAR OS VALORES DOS CONTROLOS
@@ -389,7 +405,7 @@ namespace TaskToDo
 
         private void mtxtStartData_TextChanged(object sender, EventArgs e)
         {
-            if (mtxtStartData.MaskCompleted)
+            if (!mtxtStartData.MaskCompleted)
             {
                 errorProvider5.SetError(mtxtStartData, "");
             }
@@ -397,7 +413,7 @@ namespace TaskToDo
 
         private void mtxtEndData_TextChanged(object sender, EventArgs e)
         {
-            if (mtxtEndData.MaskCompleted)
+            if (!mtxtEndData.MaskCompleted)
             {
                 errorProvider6.SetError(mtxtEndData, "");
             }
