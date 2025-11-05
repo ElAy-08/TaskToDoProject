@@ -919,14 +919,6 @@ namespace TaskToDo
 
         }
 
-        private void btnGuardar_Click(object sender, EventArgs e)
-        {
-            GuardarTreeViewParaXML();
-            GuardarNovosFuncionarios();
-            MessageBox.Show("Dados guardados com sucesso!");
-        }
-
-
         private void GuardarNovosFuncionarios()
         {
             string empPath = Path.Combine(dataFolder, FUNCIONARIOS_FILE);
@@ -938,7 +930,7 @@ namespace TaskToDo
                 string[] linhas = File.ReadAllLines(empPath);
                 foreach (string linha in linhas)
                 {
-                    if (linha.Trim() != "")
+                    if (linha.Trim() != "\r\n")
                         funcionariosAntigos.Add(linha.Trim());
                 }
             }
@@ -1034,6 +1026,13 @@ namespace TaskToDo
             {
                 xs.Serialize(fs, rootObj);
             }
+        }
+
+        private void btnGuardar_Click_1(object sender, EventArgs e)
+        {
+            GuardarTreeViewParaXML();
+            GuardarNovosFuncionarios();
+            MessageBox.Show("Dados guardados com sucesso!");
         }
     }
 
