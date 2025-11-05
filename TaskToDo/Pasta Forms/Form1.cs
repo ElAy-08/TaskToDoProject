@@ -530,38 +530,48 @@ namespace TaskToDo
 
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(tvw_main.SelectedNode.Tag is Tarefa tarefa)
+            try
             {
-                txtTarefa.Text = tarefa.Nome;
-                txt_desc.Text = tarefa.Descricao;
-                mtxtStartData.Text = tarefa.DataInicio.ToString("dd/MM/yyyy");
-                mtxtEndData.Text = tarefa.DataFim.ToString("dd/MM/yyyy");
-                TreeNode funcNode = tvw_main.SelectedNode.Parent;
-                if(funcNode.Tag is Funcionario func)
+                if (tvw_main.SelectedNode.Tag is Tarefa tarefa)
                 {
+                    txtTarefa.Text = tarefa.Nome;
+                    txt_desc.Text = tarefa.Descricao;
+                    mtxtStartData.Text = tarefa.DataInicio.ToString("dd/MM/yyyy");
+                    mtxtEndData.Text = tarefa.DataFim.ToString("dd/MM/yyyy");
+                    TreeNode funcNode = tvw_main.SelectedNode.Parent;
+                    if (funcNode.Tag is Funcionario func)
+                    {
 
-                    cmbFunc.Text = func.Nome;
-                }
-                if(funcNode.Text.Contains("Coordenador"))
-                {
-                    chbCoordenador.Checked = true;
-                }
-                else
-                {
-                    chbCoordenador.Checked = false;
-                }
-                if (funcNode.Text.Contains("Responsável"))
-                {
-                    chbResponsavel.Checked = true;
-                }
-                else
-                {
-                    chbResponsavel.Checked = false;
-                }
+                        cmbFunc.Text = func.Nome;
+                    }
+                    if (funcNode.Text.Contains("Coordenador"))
+                    {
+                        chbCoordenador.Checked = true;
+                    }
+                    else
+                    {
+                        chbCoordenador.Checked = false;
+                    }
+                    if (funcNode.Text.Contains("Responsável"))
+                    {
+                        chbResponsavel.Checked = true;
+                    }
+                    else
+                    {
+                        chbResponsavel.Checked = false;
+                    }
 
-                TreeNode teamNode = funcNode.Parent;
-                cmbEquipa.Text = teamNode.Text;
+                    TreeNode teamNode = funcNode.Parent;
+                    cmbEquipa.Text = teamNode.Text;
+                }
             }
+            catch(Exception ex)
+            {
+
+            }
+                
+            
+            
 
         }
 

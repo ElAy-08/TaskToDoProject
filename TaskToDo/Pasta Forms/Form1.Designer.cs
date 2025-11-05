@@ -45,7 +45,6 @@
             this.chbResponsavel = new System.Windows.Forms.CheckBox();
             this.grbCargo = new System.Windows.Forms.GroupBox();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.btnAdicionar = new System.Windows.Forms.Button();
             this.tvw_main = new System.Windows.Forms.TreeView();
             this.cmm_equipa = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ContextMenuCargaTrab = new System.Windows.Forms.ToolStripMenuItem();
@@ -57,12 +56,13 @@
             this.errorProvider5 = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProvider6 = new System.Windows.Forms.ErrorProvider(this.components);
             this.cmm_tarefa = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmm_func = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.apagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detalhesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmm_func = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tarefasAtivasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listaDeTarefasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnAdicionar = new System.Windows.Forms.Button();
             this.grbCargo.SuspendLayout();
             this.cmm_equipa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
@@ -79,10 +79,9 @@
             // 
             this.lbEquipa.AutoSize = true;
             this.lbEquipa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEquipa.Location = new System.Drawing.Point(17, 16);
-            this.lbEquipa.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbEquipa.Location = new System.Drawing.Point(23, 20);
             this.lbEquipa.Name = "lbEquipa";
-            this.lbEquipa.Size = new System.Drawing.Size(52, 17);
+            this.lbEquipa.Size = new System.Drawing.Size(60, 20);
             this.lbEquipa.TabIndex = 0;
             this.lbEquipa.Text = "Equipa";
             // 
@@ -90,10 +89,9 @@
             // 
             this.lbFunc.AutoSize = true;
             this.lbFunc.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFunc.Location = new System.Drawing.Point(149, 16);
-            this.lbFunc.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbFunc.Location = new System.Drawing.Point(199, 20);
             this.lbFunc.Name = "lbFunc";
-            this.lbFunc.Size = new System.Drawing.Size(82, 17);
+            this.lbFunc.Size = new System.Drawing.Size(96, 20);
             this.lbFunc.TabIndex = 1;
             this.lbFunc.Text = "Funcionário";
             // 
@@ -101,10 +99,9 @@
             // 
             this.lbTarefa.AutoSize = true;
             this.lbTarefa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTarefa.Location = new System.Drawing.Point(17, 66);
-            this.lbTarefa.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbTarefa.Location = new System.Drawing.Point(23, 81);
             this.lbTarefa.Name = "lbTarefa";
-            this.lbTarefa.Size = new System.Drawing.Size(50, 17);
+            this.lbTarefa.Size = new System.Drawing.Size(57, 20);
             this.lbTarefa.TabIndex = 2;
             this.lbTarefa.Text = "Tarefa";
             // 
@@ -112,10 +109,9 @@
             // 
             this.lbStartData.AutoSize = true;
             this.lbStartData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbStartData.Location = new System.Drawing.Point(17, 146);
-            this.lbStartData.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbStartData.Location = new System.Drawing.Point(23, 180);
             this.lbStartData.Name = "lbStartData";
-            this.lbStartData.Size = new System.Drawing.Size(94, 17);
+            this.lbStartData.Size = new System.Drawing.Size(112, 20);
             this.lbStartData.TabIndex = 3;
             this.lbStartData.Text = "Data de Início";
             // 
@@ -123,10 +119,9 @@
             // 
             this.lbEndData.AutoSize = true;
             this.lbEndData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEndData.Location = new System.Drawing.Point(149, 146);
-            this.lbEndData.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbEndData.Location = new System.Drawing.Point(199, 180);
             this.lbEndData.Name = "lbEndData";
-            this.lbEndData.Size = new System.Drawing.Size(84, 17);
+            this.lbEndData.Size = new System.Drawing.Size(101, 20);
             this.lbEndData.TabIndex = 4;
             this.lbEndData.Text = "Data de Fim";
             // 
@@ -134,10 +129,9 @@
             // 
             this.lbDescrição.AutoSize = true;
             this.lbDescrição.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDescrição.Location = new System.Drawing.Point(17, 194);
-            this.lbDescrição.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lbDescrição.Location = new System.Drawing.Point(23, 239);
             this.lbDescrição.Name = "lbDescrição";
-            this.lbDescrição.Size = new System.Drawing.Size(71, 17);
+            this.lbDescrição.Size = new System.Drawing.Size(86, 20);
             this.lbDescrição.TabIndex = 5;
             this.lbDescrição.Text = "Descrição";
             // 
@@ -145,10 +139,10 @@
             // 
             this.cmbEquipa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEquipa.FormattingEnabled = true;
-            this.cmbEquipa.Location = new System.Drawing.Point(20, 36);
-            this.cmbEquipa.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.cmbEquipa.Location = new System.Drawing.Point(27, 44);
+            this.cmbEquipa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbEquipa.Name = "cmbEquipa";
-            this.cmbEquipa.Size = new System.Drawing.Size(106, 23);
+            this.cmbEquipa.Size = new System.Drawing.Size(140, 26);
             this.cmbEquipa.TabIndex = 6;
             this.cmbEquipa.SelectedIndexChanged += new System.EventHandler(this.cmbEquipa_SelectedIndexChanged);
             // 
@@ -156,62 +150,62 @@
             // 
             this.cmbFunc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbFunc.FormattingEnabled = true;
-            this.cmbFunc.Location = new System.Drawing.Point(152, 36);
-            this.cmbFunc.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.cmbFunc.Location = new System.Drawing.Point(203, 44);
+            this.cmbFunc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbFunc.Name = "cmbFunc";
-            this.cmbFunc.Size = new System.Drawing.Size(135, 23);
+            this.cmbFunc.Size = new System.Drawing.Size(179, 26);
             this.cmbFunc.TabIndex = 7;
             this.cmbFunc.SelectedIndexChanged += new System.EventHandler(this.cmbFunc_SelectedIndexChanged);
             // 
             // txtTarefa
             // 
             this.txtTarefa.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTarefa.Location = new System.Drawing.Point(20, 87);
-            this.txtTarefa.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtTarefa.Location = new System.Drawing.Point(27, 107);
+            this.txtTarefa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtTarefa.MaxLength = 30;
             this.txtTarefa.Name = "txtTarefa";
-            this.txtTarefa.Size = new System.Drawing.Size(106, 21);
+            this.txtTarefa.Size = new System.Drawing.Size(140, 24);
             this.txtTarefa.TabIndex = 8;
             this.txtTarefa.TextChanged += new System.EventHandler(this.txtTarefa_TextChanged);
             // 
             // mtxtStartData
             // 
             this.mtxtStartData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtxtStartData.Location = new System.Drawing.Point(20, 168);
-            this.mtxtStartData.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.mtxtStartData.Location = new System.Drawing.Point(27, 207);
+            this.mtxtStartData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.mtxtStartData.Name = "mtxtStartData";
-            this.mtxtStartData.Size = new System.Drawing.Size(106, 21);
+            this.mtxtStartData.Size = new System.Drawing.Size(140, 24);
             this.mtxtStartData.TabIndex = 9;
             this.mtxtStartData.TextChanged += new System.EventHandler(this.mtxtStartData_TextChanged);
             // 
             // mtxtEndData
             // 
             this.mtxtEndData.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mtxtEndData.Location = new System.Drawing.Point(152, 168);
-            this.mtxtEndData.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.mtxtEndData.Location = new System.Drawing.Point(203, 207);
+            this.mtxtEndData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.mtxtEndData.Name = "mtxtEndData";
-            this.mtxtEndData.Size = new System.Drawing.Size(106, 21);
+            this.mtxtEndData.Size = new System.Drawing.Size(140, 24);
             this.mtxtEndData.TabIndex = 10;
             this.mtxtEndData.TextChanged += new System.EventHandler(this.mtxtEndData_TextChanged);
             // 
             // txt_desc
             // 
             this.txt_desc.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_desc.Location = new System.Drawing.Point(20, 214);
-            this.txt_desc.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txt_desc.Location = new System.Drawing.Point(27, 263);
+            this.txt_desc.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txt_desc.Multiline = true;
             this.txt_desc.Name = "txt_desc";
-            this.txt_desc.Size = new System.Drawing.Size(267, 143);
+            this.txt_desc.Size = new System.Drawing.Size(355, 175);
             this.txt_desc.TabIndex = 11;
             // 
             // chbCoordenador
             // 
             this.chbCoordenador.AutoSize = true;
             this.chbCoordenador.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbCoordenador.Location = new System.Drawing.Point(12, 21);
-            this.chbCoordenador.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.chbCoordenador.Location = new System.Drawing.Point(16, 26);
+            this.chbCoordenador.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chbCoordenador.Name = "chbCoordenador";
-            this.chbCoordenador.Size = new System.Drawing.Size(110, 21);
+            this.chbCoordenador.Size = new System.Drawing.Size(127, 24);
             this.chbCoordenador.TabIndex = 12;
             this.chbCoordenador.Text = "Coordenador";
             this.chbCoordenador.UseVisualStyleBackColor = true;
@@ -221,10 +215,10 @@
             // 
             this.chbResponsavel.AutoSize = true;
             this.chbResponsavel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbResponsavel.Location = new System.Drawing.Point(12, 42);
-            this.chbResponsavel.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.chbResponsavel.Location = new System.Drawing.Point(16, 52);
+            this.chbResponsavel.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.chbResponsavel.Name = "chbResponsavel";
-            this.chbResponsavel.Size = new System.Drawing.Size(109, 21);
+            this.chbResponsavel.Size = new System.Drawing.Size(127, 24);
             this.chbResponsavel.TabIndex = 13;
             this.chbResponsavel.Text = "Responsável";
             this.chbResponsavel.UseVisualStyleBackColor = true;
@@ -235,11 +229,11 @@
             this.grbCargo.Controls.Add(this.chbCoordenador);
             this.grbCargo.Controls.Add(this.chbResponsavel);
             this.grbCargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grbCargo.Location = new System.Drawing.Point(152, 66);
-            this.grbCargo.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.grbCargo.Location = new System.Drawing.Point(203, 81);
+            this.grbCargo.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.grbCargo.Name = "grbCargo";
-            this.grbCargo.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.grbCargo.Size = new System.Drawing.Size(134, 70);
+            this.grbCargo.Padding = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.grbCargo.Size = new System.Drawing.Size(179, 86);
             this.grbCargo.TabIndex = 14;
             this.grbCargo.TabStop = false;
             this.grbCargo.Text = "Cargo";
@@ -250,35 +244,20 @@
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGuardar.ForeColor = System.Drawing.Color.White;
-            this.btnGuardar.Location = new System.Drawing.Point(167, 362);
-            this.btnGuardar.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.btnGuardar.Location = new System.Drawing.Point(223, 446);
+            this.btnGuardar.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.btnGuardar.Name = "btnGuardar";
-            this.btnGuardar.Size = new System.Drawing.Size(120, 33);
+            this.btnGuardar.Size = new System.Drawing.Size(160, 41);
             this.btnGuardar.TabIndex = 15;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = false;
             // 
-            // btnAdicionar
-            // 
-            this.btnAdicionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionar.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionar.Location = new System.Drawing.Point(20, 362);
-            this.btnAdicionar.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(120, 33);
-            this.btnAdicionar.TabIndex = 17;
-            this.btnAdicionar.Text = "Adicionar";
-            this.btnAdicionar.UseVisualStyleBackColor = false;
-            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
-            // 
             // tvw_main
             // 
-            this.tvw_main.Location = new System.Drawing.Point(306, 16);
-            this.tvw_main.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.tvw_main.Location = new System.Drawing.Point(408, 20);
+            this.tvw_main.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
             this.tvw_main.Name = "tvw_main";
-            this.tvw_main.Size = new System.Drawing.Size(225, 378);
+            this.tvw_main.Size = new System.Drawing.Size(299, 464);
             this.tvw_main.TabIndex = 18;
             this.tvw_main.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.tvw_main_NodeMouseClick);
             // 
@@ -289,19 +268,19 @@
             this.ContextMenuCargaTrab,
             this.ContextMenuDesempenho});
             this.cmm_equipa.Name = "contextMenuMain";
-            this.cmm_equipa.Size = new System.Drawing.Size(181, 70);
+            this.cmm_equipa.Size = new System.Drawing.Size(201, 52);
             // 
             // ContextMenuCargaTrab
             // 
             this.ContextMenuCargaTrab.Name = "ContextMenuCargaTrab";
-            this.ContextMenuCargaTrab.Size = new System.Drawing.Size(180, 22);
+            this.ContextMenuCargaTrab.Size = new System.Drawing.Size(200, 24);
             this.ContextMenuCargaTrab.Text = "Carga de Trabalho";
             this.ContextMenuCargaTrab.Click += new System.EventHandler(this.ContextMenuCargaTrab_Click);
             // 
             // ContextMenuDesempenho
             // 
             this.ContextMenuDesempenho.Name = "ContextMenuDesempenho";
-            this.ContextMenuDesempenho.Size = new System.Drawing.Size(180, 22);
+            this.ContextMenuDesempenho.Size = new System.Drawing.Size(200, 24);
             this.ContextMenuDesempenho.Text = "Desempenho";
             this.ContextMenuDesempenho.Click += new System.EventHandler(this.ContextMenuDesempenho_Click);
             // 
@@ -331,61 +310,78 @@
             // 
             // cmm_tarefa
             // 
+            this.cmm_tarefa.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.cmm_tarefa.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.editarToolStripMenuItem,
             this.apagarToolStripMenuItem,
             this.detalhesToolStripMenuItem});
             this.cmm_tarefa.Name = "cmm_tarefa";
-            this.cmm_tarefa.Size = new System.Drawing.Size(120, 70);
-            // 
-            // cmm_func
-            // 
-            this.cmm_func.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tarefasAtivasToolStripMenuItem,
-            this.listaDeTarefasToolStripMenuItem});
-            this.cmm_func.Name = "cmm_func";
-            this.cmm_func.Size = new System.Drawing.Size(155, 48);
+            this.cmm_tarefa.Size = new System.Drawing.Size(137, 76);
             // 
             // editarToolStripMenuItem
             // 
             this.editarToolStripMenuItem.Name = "editarToolStripMenuItem";
-            this.editarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.editarToolStripMenuItem.Size = new System.Drawing.Size(136, 24);
             this.editarToolStripMenuItem.Text = "Editar";
             this.editarToolStripMenuItem.Click += new System.EventHandler(this.editarToolStripMenuItem_Click);
             // 
             // apagarToolStripMenuItem
             // 
             this.apagarToolStripMenuItem.Name = "apagarToolStripMenuItem";
-            this.apagarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.apagarToolStripMenuItem.Size = new System.Drawing.Size(136, 24);
             this.apagarToolStripMenuItem.Text = "Apagar";
             this.apagarToolStripMenuItem.Click += new System.EventHandler(this.apagarToolStripMenuItem_Click);
             // 
             // detalhesToolStripMenuItem
             // 
             this.detalhesToolStripMenuItem.Name = "detalhesToolStripMenuItem";
-            this.detalhesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.detalhesToolStripMenuItem.Size = new System.Drawing.Size(136, 24);
             this.detalhesToolStripMenuItem.Text = "Detalhes";
             this.detalhesToolStripMenuItem.Click += new System.EventHandler(this.detalhesToolStripMenuItem_Click);
+            // 
+            // cmm_func
+            // 
+            this.cmm_func.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.cmm_func.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tarefasAtivasToolStripMenuItem,
+            this.listaDeTarefasToolStripMenuItem});
+            this.cmm_func.Name = "cmm_func";
+            this.cmm_func.Size = new System.Drawing.Size(180, 52);
             // 
             // tarefasAtivasToolStripMenuItem
             // 
             this.tarefasAtivasToolStripMenuItem.Name = "tarefasAtivasToolStripMenuItem";
-            this.tarefasAtivasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tarefasAtivasToolStripMenuItem.Size = new System.Drawing.Size(179, 24);
             this.tarefasAtivasToolStripMenuItem.Text = "Tarefas Ativas";
             this.tarefasAtivasToolStripMenuItem.Click += new System.EventHandler(this.tarefasAtivasToolStripMenuItem_Click);
             // 
             // listaDeTarefasToolStripMenuItem
             // 
             this.listaDeTarefasToolStripMenuItem.Name = "listaDeTarefasToolStripMenuItem";
-            this.listaDeTarefasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.listaDeTarefasToolStripMenuItem.Size = new System.Drawing.Size(179, 24);
             this.listaDeTarefasToolStripMenuItem.Text = "Lista de Tarefas";
             this.listaDeTarefasToolStripMenuItem.Click += new System.EventHandler(this.listaDeTarefasToolStripMenuItem_Click);
             // 
+            // btnAdicionar
+            // 
+            this.btnAdicionar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionar.ForeColor = System.Drawing.Color.White;
+            this.btnAdicionar.Location = new System.Drawing.Point(27, 446);
+            this.btnAdicionar.Margin = new System.Windows.Forms.Padding(3, 1, 3, 1);
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.Size = new System.Drawing.Size(160, 41);
+            this.btnAdicionar.TabIndex = 17;
+            this.btnAdicionar.Text = "Adicionar";
+            this.btnAdicionar.UseVisualStyleBackColor = false;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(539, 400);
+            this.ClientSize = new System.Drawing.Size(719, 492);
             this.Controls.Add(this.tvw_main);
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.btnGuardar);
@@ -403,7 +399,7 @@
             this.Controls.Add(this.lbFunc);
             this.Controls.Add(this.lbEquipa);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -443,7 +439,6 @@
         private System.Windows.Forms.CheckBox chbResponsavel;
         private System.Windows.Forms.GroupBox grbCargo;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.TreeView tvw_main;
         private System.Windows.Forms.ContextMenuStrip cmm_equipa;
         private System.Windows.Forms.ToolStripMenuItem ContextMenuCargaTrab;
@@ -461,6 +456,7 @@
         private System.Windows.Forms.ContextMenuStrip cmm_func;
         private System.Windows.Forms.ToolStripMenuItem tarefasAtivasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem listaDeTarefasToolStripMenuItem;
+        private System.Windows.Forms.Button btnAdicionar;
     }
 }
 
