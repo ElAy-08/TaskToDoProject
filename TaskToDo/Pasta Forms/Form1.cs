@@ -371,6 +371,34 @@ namespace TaskToDo
                 .Cast<TreeNode>()
                 .FirstOrDefault(n => n.Text.StartsWith(cmbFunc.Text));
 
+            if (chbCoordenador.Checked)
+            {
+                bool jaTemCoord = teamNode?.Nodes
+                    .Cast<TreeNode>()
+                    .Any(n => n.Text.Contains("Coordenador")) == true;
+
+                if (jaTemCoord)
+                {
+                    MessageBox.Show("Esta equipa já possui um Coordenador atribuído.",
+                        "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+
+            if (teamNode != null && teamNode.Nodes.Count >= 5)
+            {
+                MessageBox.Show("Cada equipa pode ter no máximo 5 funcionários.",
+                    "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (funcNode != null && funcNode.Nodes.Count >= 3)
+            {
+                MessageBox.Show("Cada funcionário pode ter no máximo 3 tarefas.",
+                    "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (funcNode == null)
             {
                 // Adiciona o funcionário e indica cargo
@@ -891,6 +919,122 @@ namespace TaskToDo
 
         }
 
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            GuardarTreeViewParaXML();
+            GuardarNovosFuncionarios();
+            MessageBox.Show("Dados guardados com sucesso!");
+        }
+
+
+        private void GuardarNovosFuncionarios()
+        {
+            string empPath = Path.Combine(dataFolder, FUNCIONARIOS_FILE);
+
+            // Criar lista de funcionários já existentes (se o ficheiro existir)
+            List<string> funcionariosAntigos = new List<string>();
+            if (File.Exists(empPath))
+            {
+                string[] linhas = File.ReadAllLines(empPath);
+                foreach (string linha in linhas)
+                {
+                    if (linha.Trim() != "")
+                        funcionariosAntigos.Add(linha.Trim());
+                }
+            }
+
+            // Recolher funcionários atuais da TreeView
+            List<string> funcionariosAtuais = new List<string>();
+            foreach (TreeNode equipaNode in tvw_main.Nodes)
+            {
+                foreach (TreeNode funcNode in equipaNode.Nodes)
+                {
+                    if (funcNode.Tag is Funcionario func)
+                    {
+                        funcionariosAtuais.Add(func.Nome);
+                    }
+                }
+            }
+
+            // Verificar quais são novos (não estão na lista antiga)
+            List<string> novos = new List<string>();
+            foreach (string nome in funcionariosAtuais)
+            {
+                bool jaExiste = false;
+                foreach (string antigo in funcionariosAntigos)
+                {
+                    if (nome == antigo)
+                    {
+                        jaExiste = true;
+                        break;
+                    }
+                }
+
+                if (!jaExiste)
+                {
+                    novos.Add(nome);
+                }
+            }
+
+            // Só escreve se houver novos
+            if (novos.Count > 0)
+            {
+                using (StreamWriter sw = new StreamWriter(empPath, true))
+                {
+                    foreach (string nomeNovo in novos)
+                    {
+                        sw.WriteLine(nomeNovo);
+                    }
+                }
+            }
+        }
+
+        private void GuardarTreeViewParaXML()
+        {
+            string treePath = Path.Combine(dataFolder, TREE_FILE);
+            Root rootObj = new Root();
+
+            foreach (TreeNode equipaNode in tvw_main.Nodes)
+            {
+                if (equipaNode.Tag is Equipa equipa)
+                {
+                    Equipa equipaXml = new Equipa();
+                    equipaXml.Nome = equipa.Nome;
+
+                    foreach (TreeNode funcNode in equipaNode.Nodes)
+                    {
+                        if (funcNode.Tag is Funcionario func)
+                        {
+                            Funcionario funcXml = new Funcionario();
+                            funcXml.Nome = func.Nome;
+
+                            foreach (TreeNode tarefaNode in funcNode.Nodes)
+                            {
+                                if (tarefaNode.Tag is Tarefa tarefa)
+                                {
+                                    funcXml.Tarefas.Add(new Tarefa(
+                                        tarefa.Nome,
+                                        tarefa.Descricao,
+                                        tarefa.DataInicio,
+                                        tarefa.DataFim
+                                    ));
+                                }
+                            }
+
+                            equipaXml.Funcionarios.Add(funcXml);
+                        }
+                    }
+
+                    rootObj.Equipas.Add(equipaXml);
+                }
+            }
+
+            XmlSerializer xs = new XmlSerializer(typeof(Root));
+            using (var fs = new FileStream(treePath, FileMode.Create))
+            {
+                xs.Serialize(fs, rootObj);
+            }
+        }
     }
 
 }
