@@ -567,7 +567,7 @@ namespace TaskToDo
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show("Nenhum Item selecionado");
             }
                 
             
@@ -589,42 +589,49 @@ namespace TaskToDo
 
         private void apagarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TreeNode selectedNode = tvw_main.SelectedNode;
-            if (selectedNode == null) return; // Nenhum nó selecionado
-
-            // Só pode apagar tarefas
-            if (selectedNode.Tag is Tarefa tarefa)
+            try
             {
-                // Nó do funcionário (pai da tarefa)
-                TreeNode funcNode = selectedNode.Parent;
-                if (funcNode?.Tag is Funcionario funcionario)
+                TreeNode selectedNode = tvw_main.SelectedNode;
+                if (selectedNode == null) return; // Nenhum nó selecionado
+
+                // Só pode apagar tarefas
+                if (selectedNode.Tag is Tarefa tarefa)
                 {
-                    // Nó da equipa (pai do funcionário) — guardamos antes de remover funcNode
-                    TreeNode teamNode = funcNode.Parent;
-                    Equipa equipa = teamNode?.Tag as Equipa;
-
-                    // Remove a tarefa da lista de tarefas do funcionário
-                    funcionario.Tarefas.Remove(tarefa);
-
-                    // Remove o nó da tarefa da TreeView
-                    selectedNode.Remove();
-
-                    // Se o funcionário ficou sem tarefas, remove o nó do funcionário
-                    if (!funcionario.Tarefas.Any())
+                    // Nó do funcionário (pai da tarefa)
+                    TreeNode funcNode = selectedNode.Parent;
+                    if (funcNode?.Tag is Funcionario funcionario)
                     {
-                        // Remove o funcionário da lista da equipa
-                        equipa?.Funcionarios.Remove(funcionario);
+                        // Nó da equipa (pai do funcionário) — guardamos antes de remover funcNode
+                        TreeNode teamNode = funcNode.Parent;
+                        Equipa equipa = teamNode?.Tag as Equipa;
 
-                        // Remove o nó do funcionário da TreeView
-                        funcNode.Remove();
+                        // Remove a tarefa da lista de tarefas do funcionário
+                        funcionario.Tarefas.Remove(tarefa);
 
-                        // Se a equipa ficou sem funcionários, remove o nó da equipa
-                        if (equipa != null && !equipa.Funcionarios.Any())
+                        // Remove o nó da tarefa da TreeView
+                        selectedNode.Remove();
+
+                        // Se o funcionário ficou sem tarefas, remove o nó do funcionário
+                        if (!funcionario.Tarefas.Any())
                         {
-                            teamNode.Remove();
+                            // Remove o funcionário da lista da equipa
+                            equipa?.Funcionarios.Remove(funcionario);
+
+                            // Remove o nó do funcionário da TreeView
+                            funcNode.Remove();
+
+                            // Se a equipa ficou sem funcionários, remove o nó da equipa
+                            if (equipa != null && !equipa.Funcionarios.Any())
+                            {
+                                teamNode.Remove();
+                            }
                         }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nenhum Item selecionado");
             }
 
 
@@ -632,224 +639,258 @@ namespace TaskToDo
 
         private void detalhesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
-            TreeNode selectedNode = tvw_main.SelectedNode;
-            if (selectedNode == null) return;
-
-            // Só funciona para tarefas
-            if (selectedNode.Tag is Tarefa tarefa)
+            try
             {
-                // Nó do funcionário (pai da tarefa)
-                TreeNode funcNode = selectedNode.Parent;
+                TreeNode selectedNode = tvw_main.SelectedNode;
+                if (selectedNode == null) return;
 
-                // Nó da equipa (pai do funcionário)
-                TreeNode teamNode = funcNode?.Parent;
-                Equipa equipa = teamNode?.Tag as Equipa;
-
-                // Monta a mensagem principal
-                string mensagem = "Detalhes da Tarefa:\n";
-                mensagem += "Nome: " + tarefa.Nome + "\n";
-                mensagem += "Descrição: " + tarefa.Descricao + "\n";
-                mensagem += "Data Início: " + tarefa.DataInicio.ToString("dd/MM/yyyy") + "\n";
-                mensagem += "Data Fim: " + tarefa.DataFim.ToString("dd/MM/yyyy") + "\n";
-
-                if (equipa != null)
-                    mensagem += "Equipa: " + equipa.Nome + "\n";
-
-                // Procura todos os funcionários que têm a mesma tarefa
-                List<string> funcionariosComTarefa = new List<string>();
-
-                foreach (TreeNode team in tvw_main.Nodes)
+                // Só funciona para tarefas
+                if (selectedNode.Tag is Tarefa tarefa)
                 {
-                    foreach (TreeNode func in team.Nodes)
+                    // Nó do funcionário (pai da tarefa)
+                    TreeNode funcNode = selectedNode.Parent;
+
+                    // Nó da equipa (pai do funcionário)
+                    TreeNode teamNode = funcNode?.Parent;
+                    Equipa equipa = teamNode?.Tag as Equipa;
+
+                    // Monta a mensagem principal
+                    string mensagem = "Detalhes da Tarefa:\n";
+                    mensagem += "Nome: " + tarefa.Nome + "\n";
+                    mensagem += "Descrição: " + tarefa.Descricao + "\n";
+                    mensagem += "Data Início: " + tarefa.DataInicio.ToString("dd/MM/yyyy") + "\n";
+                    mensagem += "Data Fim: " + tarefa.DataFim.ToString("dd/MM/yyyy") + "\n";
+
+                    if (equipa != null)
+                        mensagem += "Equipa: " + equipa.Nome + "\n";
+
+                    // Procura todos os funcionários que têm a mesma tarefa
+                    List<string> funcionariosComTarefa = new List<string>();
+
+                    foreach (TreeNode team in tvw_main.Nodes)
                     {
-                        if (func.Tag is Funcionario f)
+                        foreach (TreeNode func in team.Nodes)
                         {
-                            if (f.Tarefas.Any(t => t.Nome.Equals(tarefa.Nome, StringComparison.OrdinalIgnoreCase)))
+                            if (func.Tag is Funcionario f)
                             {
-                                funcionariosComTarefa.Add(f.Nome);
+                                if (f.Tarefas.Any(t => t.Nome.Equals(tarefa.Nome, StringComparison.OrdinalIgnoreCase)))
+                                {
+                                    funcionariosComTarefa.Add(f.Nome);
+                                }
                             }
                         }
                     }
-                }
 
-                // Adiciona todos os funcionários em um único campo
-                if (funcionariosComTarefa.Any())
-                {
-                    mensagem += "Funcionários: " + string.Join(", ", funcionariosComTarefa) + "\n";
-                }
+                    // Adiciona todos os funcionários em um único campo
+                    if (funcionariosComTarefa.Any())
+                    {
+                        mensagem += "Funcionários: " + string.Join(", ", funcionariosComTarefa) + "\n";
+                    }
 
-                MessageBox.Show(mensagem, "Detalhes da Tarefa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(mensagem, "Detalhes da Tarefa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nenhum Item selecionado");
             }
         }
 
         private void tarefasAtivasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TreeNode selectedNode = tvw_main.SelectedNode;
-            if (selectedNode == null) return;
-
-            // Só funciona se o nó selecionado for um funcionário
-            if (selectedNode.Tag is Funcionario funcionario)
+            try
             {
-                // Nó da equipa (pai do funcionário)
-                TreeNode teamNode = selectedNode.Parent;
-                Equipa equipa = teamNode?.Tag as Equipa;
+                TreeNode selectedNode = tvw_main.SelectedNode;
+                if (selectedNode == null) return;
 
-                // Monta a mensagem
-                string mensagem = "Tarefas Ativas do Funcionário:\n";
-                mensagem += "Funcionário: " + funcionario.Nome + "\n";
-                if (equipa != null)
-                    mensagem += "Equipa: " + equipa.Nome + "\n\n";
-
-                if (funcionario.Tarefas.Any())
+                // Só funciona se o nó selecionado for um funcionário
+                if (selectedNode.Tag is Funcionario funcionario)
                 {
-                    foreach (var tarefa in funcionario.Tarefas)
+                    // Nó da equipa (pai do funcionário)
+                    TreeNode teamNode = selectedNode.Parent;
+                    Equipa equipa = teamNode?.Tag as Equipa;
+
+                    // Monta a mensagem
+                    string mensagem = "Tarefas Ativas do Funcionário:\n";
+                    mensagem += "Funcionário: " + funcionario.Nome + "\n";
+                    if (equipa != null)
+                        mensagem += "Equipa: " + equipa.Nome + "\n\n";
+
+                    if (funcionario.Tarefas.Any())
                     {
-                        mensagem += "Tarefa: " + tarefa.Nome + "\n";
-                        mensagem += "Data Início: " + tarefa.DataInicio.ToString("dd/MM/yyyy") + "\n";
-                        mensagem += "Data Fim: " + tarefa.DataFim.ToString("dd/MM/yyyy") + "\n\n";
+                        foreach (var tarefa in funcionario.Tarefas)
+                        {
+                            mensagem += "Tarefa: " + tarefa.Nome + "\n";
+                            mensagem += "Data Início: " + tarefa.DataInicio.ToString("dd/MM/yyyy") + "\n";
+                            mensagem += "Data Fim: " + tarefa.DataFim.ToString("dd/MM/yyyy") + "\n\n";
+                        }
                     }
-                }
-                else
-                {
-                    mensagem += "Este funcionário não tem tarefas ativas.\n";
-                }
+                    else
+                    {
+                        mensagem += "Este funcionário não tem tarefas ativas.\n";
+                    }
 
-                MessageBox.Show(mensagem, "Tarefas Ativas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(mensagem, "Tarefas Ativas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nenhum Item selecionado");
             }
 
-            
+
         }
 
         private void listaDeTarefasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TreeNode selectedNode = tvw_main.SelectedNode;
-            if (selectedNode == null) return;
-
-            // Só funciona se o nó selecionado for um funcionário
-            if (selectedNode.Tag is Funcionario funcionario)
+            try
             {
-                // Nó da equipa (pai do funcionário)
-                TreeNode teamNode = selectedNode.Parent;
-                Equipa equipa = teamNode?.Tag as Equipa;
+                TreeNode selectedNode = tvw_main.SelectedNode;
+                if (selectedNode == null) return;
 
-                // Monta a mensagem
-                string mensagem = "Lista de Tarefas do Funcionário:\n";
-                mensagem += "Funcionário: " + funcionario.Nome + "\n";
-                if (equipa != null)
-                    mensagem += "Equipa: " + equipa.Nome + "\n\n";
-
-                if (funcionario.Tarefas.Any())
+                // Só funciona se o nó selecionado for um funcionário
+                if (selectedNode.Tag is Funcionario funcionario)
                 {
-                    foreach (var tarefa in funcionario.Tarefas)
+                    // Nó da equipa (pai do funcionário)
+                    TreeNode teamNode = selectedNode.Parent;
+                    Equipa equipa = teamNode?.Tag as Equipa;
+
+                    // Monta a mensagem
+                    string mensagem = "Lista de Tarefas do Funcionário:\n";
+                    mensagem += "Funcionário: " + funcionario.Nome + "\n";
+                    if (equipa != null)
+                        mensagem += "Equipa: " + equipa.Nome + "\n\n";
+
+                    if (funcionario.Tarefas.Any())
                     {
-                        mensagem += "Tarefa: " + tarefa.Nome + "\n";
-                        mensagem += "Data Início: " + tarefa.DataInicio.ToString("dd/MM/yyyy") + "\n";
-                        mensagem += "Data Fim: " + tarefa.DataFim.ToString("dd/MM/yyyy") + "\n\n";
+                        foreach (var tarefa in funcionario.Tarefas)
+                        {
+                            mensagem += "Tarefa: " + tarefa.Nome + "\n";
+                            mensagem += "Data Início: " + tarefa.DataInicio.ToString("dd/MM/yyyy") + "\n";
+                            mensagem += "Data Fim: " + tarefa.DataFim.ToString("dd/MM/yyyy") + "\n\n";
+                        }
                     }
-                }
-                else
-                {
-                    mensagem += "Este funcionário não tem tarefas atribuídas.\n";
-                }
+                    else
+                    {
+                        mensagem += "Este funcionário não tem tarefas atribuídas.\n";
+                    }
 
-                MessageBox.Show(mensagem, "Lista de Tarefas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(mensagem, "Lista de Tarefas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nenhum Item selecionado");
             }
 
-            
+
         }
 
         private void ContextMenuCargaTrab_Click(object sender, EventArgs e)
         {
-            TreeNode selectedNode = tvw_main.SelectedNode;
-            if (selectedNode == null) return;
-
-            // Só funciona se o nó selecionado for uma equipa
-            if (selectedNode.Tag is Equipa equipa)
+            try
             {
-                string mensagem = $"Carga de Trabalho da Equipa: {equipa.Nome}\n\n";
+                TreeNode selectedNode = tvw_main.SelectedNode;
+                if (selectedNode == null) return;
 
-                // Lista de todas as tarefas da equipa
-                List<string> tarefasList = new List<string>();
-
-                foreach (var func in equipa.Funcionarios)
+                // Só funciona se o nó selecionado for uma equipa
+                if (selectedNode.Tag is Equipa equipa)
                 {
-                    foreach (var tarefa in func.Tarefas)
+                    string mensagem = $"Carga de Trabalho da Equipa: {equipa.Nome}\n\n";
+
+                    // Lista de todas as tarefas da equipa
+                    List<string> tarefasList = new List<string>();
+
+                    foreach (var func in equipa.Funcionarios)
                     {
-                        tarefasList.Add($"Tarefa: {tarefa.Nome} | Funcionário: {func.Nome} | Data Fim: {tarefa.DataFim:dd/MM/yyyy}");
+                        foreach (var tarefa in func.Tarefas)
+                        {
+                            tarefasList.Add($"Tarefa: {tarefa.Nome} | Funcionário: {func.Nome} | Data Fim: {tarefa.DataFim:dd/MM/yyyy}");
+                        }
                     }
-                }
 
-                mensagem += $"Quantidade de tarefas: {tarefasList.Count}\n\n";
+                    mensagem += $"Quantidade de tarefas: {tarefasList.Count}\n\n";
 
-                if (tarefasList.Count > 0)
-                {
-                    mensagem += string.Join("\n", tarefasList);
-                }
-                else
-                {
-                    mensagem += "Nenhuma tarefa atribuída aos funcionários desta equipa.";
-                }
+                    if (tarefasList.Count > 0)
+                    {
+                        mensagem += string.Join("\n", tarefasList);
+                    }
+                    else
+                    {
+                        mensagem += "Nenhuma tarefa atribuída aos funcionários desta equipa.";
+                    }
 
-                MessageBox.Show(mensagem, "Carga de Trabalho", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(mensagem, "Carga de Trabalho", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nenhum Item selecionado");
 
-            
-        }
+            }
+            }
 
         private void ContextMenuDesempenho_Click(object sender, EventArgs e)
         {
-            TreeNode selectedNode = tvw_main.SelectedNode;
-            if (selectedNode == null) return;
-
-            // Só funciona se o nó selecionado for uma equipa
-            if (selectedNode.Tag is Equipa equipa)
+            try
             {
-                Equipa equipaXml = new Equipa
+                TreeNode selectedNode = tvw_main.SelectedNode;
+                if (selectedNode == null) return;
+
+                // Só funciona se o nó selecionado for uma equipa
+                if (selectedNode.Tag is Equipa equipa)
                 {
-                    Nome = equipa.Nome
-                };
-                foreach (var func in equipa.Funcionarios)
-                {
-                    Funcionario funcXml = new Funcionario
+                    Equipa equipaXml = new Equipa
                     {
-                        Nome = func.Nome
+                        Nome = equipa.Nome
                     };
-
-                    foreach (var tarefa in func.Tarefas)
+                    foreach (var func in equipa.Funcionarios)
                     {
-                        funcXml.Tarefas.Add(new Tarefa(tarefa.Nome,tarefa.Descricao,tarefa.DataInicio, tarefa.DataFim));
-                    }
-
-                    equipaXml.Funcionarios.Add(funcXml);
-                }
-                using (SaveFileDialog sfd = new SaveFileDialog())
-                {
-                    sfd.Title = "Salvar relatório de desempenho (XML)";
-                    sfd.Filter = "Ficheiro XML (*.xml)|*.xml";
-                    sfd.FileName = $"Desempenho_{equipa.Nome}.xml";
-
-                    if (sfd.ShowDialog() != DialogResult.OK) return;
-
-                    try
-                    {
-                        XmlSerializer serializer = new XmlSerializer(typeof(Equipa));
-                        using (FileStream fs = new FileStream(sfd.FileName, FileMode.Create))
+                        Funcionario funcXml = new Funcionario
                         {
-                            serializer.Serialize(fs, equipaXml);
+                            Nome = func.Nome
+                        };
+
+                        foreach (var tarefa in func.Tarefas)
+                        {
+                            funcXml.Tarefas.Add(new Tarefa(tarefa.Nome, tarefa.Descricao, tarefa.DataInicio, tarefa.DataFim));
                         }
 
-                        MessageBox.Show("Relatório de desempenho em XML gerado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        equipaXml.Funcionarios.Add(funcXml);
                     }
-                    catch (Exception ex)
+                    using (SaveFileDialog sfd = new SaveFileDialog())
                     {
-                        MessageBox.Show("Erro ao gerar o relatório XML: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        sfd.Title = "Salvar relatório de desempenho (XML)";
+                        sfd.Filter = "Ficheiro XML (*.xml)|*.xml";
+                        sfd.FileName = $"Desempenho_{equipa.Nome}.xml";
+
+                        if (sfd.ShowDialog() != DialogResult.OK) return;
+
+                        try
+                        {
+                            XmlSerializer serializer = new XmlSerializer(typeof(Equipa));
+                            using (FileStream fs = new FileStream(sfd.FileName, FileMode.Create))
+                            {
+                                serializer.Serialize(fs, equipaXml);
+                            }
+
+                            MessageBox.Show("Relatório de desempenho em XML gerado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Erro ao gerar o relatório XML: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nenhum Item selecionado");
             }
 
 
         }
+
     }
 
 }
