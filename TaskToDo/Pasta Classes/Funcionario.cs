@@ -13,6 +13,13 @@ namespace TaskToDo.Pasta_Classes
         //Um funcionário tem várias tarefas
         public List<Tarefa> Tarefas { get; set; } = new List<Tarefa>();
 
+        public Funcionario() { }
+        public Funcionario(string nome)
+        {
+            Nome = nome;
+        }
+
+        
         //Override do ToString para mostrar o nome do funcionário na TreeView e ComboBox
         public override string ToString() => Nome;
 

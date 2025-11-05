@@ -15,5 +15,7 @@ namespace TaskToDo.Pasta_Classes
         //Override do ToString para mostrar o nome da equipa na TreeView e ComboBox
         public override string ToString() => Nome;
 
+        public Equipa() { }
+
     }
 }

@@ -13,6 +13,15 @@ namespace TaskToDo.Pasta_Classes
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
 
+        public Tarefa(string nome, string descricao, DateTime dataInicio, DateTime dataFim)
+        {
+            Nome = nome;
+            Descricao = descricao;
+            DataInicio = dataInicio;
+            DataFim = dataFim;
+        }
+        public Tarefa() { }
+
         //Override do ToString para mostrar no formato nome da tarefa e as datas na TreeView
         public override string ToString()
         => $"{Nome} ({DataInicio:dd/MM/yyyy} - {DataFim:dd/MM/yyyy})";
